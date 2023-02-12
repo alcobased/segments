@@ -24,6 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
             boxElement.style.width = `${event.clientX - 20}px`;
             boxElement.style.height = `${event.clientY - 50}px`;
             
+    }
+    });
+    
+    let buttonDown;
+    button.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        buttonDown = true;
+    });
+    button.addEventListener("mouseup", (event) => {
+        event.preventDefault();
+        buttonDown = false;
+    });
+    boxElement.addEventListener("mousemove", (event) => {
+        // console.log(`BUT clientX: ${event.clientX}, clientY: ${event.clientY}`);
+        console.log(this);
+        if (buttonDown) {
+            repositionButton(boxElement, button);
+            boxElement.style.width = `${event.clientX - 20}px`;
+            boxElement.style.height = `${event.clientY - 50}px`;
+            
         }
     });
 
